@@ -12,6 +12,7 @@ namespace Assignment1.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -23,10 +24,7 @@ namespace Assignment1.Controllers
             return View();
         }
 
-        public IActionResult Product()
-        {
-            return View();
-        }
+      
         public IActionResult Technician()
         {
             return View();

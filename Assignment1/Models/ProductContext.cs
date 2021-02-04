@@ -12,7 +12,8 @@ namespace Assignment1.Models
         
             : base(options)
         { }
-        DbSet<Product> Products{ get;set; }
+        DbSet<Product> Product{ get;set; }
         
     }
 }
+
