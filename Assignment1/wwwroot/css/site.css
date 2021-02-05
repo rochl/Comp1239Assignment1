@@ -47,8 +47,9 @@ html {
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
+    color: white;
 }
 
 /* Sticky footer styles
@@ -82,3 +83,4 @@ body {
     border-bottom:1px solid grey;
     font-size:18px;
 }
+

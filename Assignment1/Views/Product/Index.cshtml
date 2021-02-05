@@ -1,6 +1,36 @@
 ﻿@{
-    ViewData["Title"] = "Product Manager";
+    
 }
 <h1>@ViewData["Title"]</h1>
+<h2>Product List</h2>
+<a asp-controller="Product" asp-action="Add">Add New Product</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>CODE</th><th>Name</th><th>Price</th><th>Release Date</th><th></th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>CODE</td>
+            <td>Name</td>
+            <td>Price</td>
+            <td>Release Date</td>
+            <td>
+                
+                    <a asp-controller="Product" asp-action="Update" asp-route-id=""
+                       asp-route-slug="" class="btn btn-primary">
+                        Edit
+                    </a>
+                
+                
+                    <a asp-controller="Product" asp-action="Delete" asp-route-id=""
+                       asp-route-slug="" class="btn btn-primary" style="color:white;">
+                        Delete
+                    </a>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 
 
