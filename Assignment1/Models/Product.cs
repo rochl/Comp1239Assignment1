@@ -18,7 +18,7 @@ namespace Assignment1.Models
 
         public DateTime DateAdded { get; set; }
 
-        public string Slug => productName?.Replace(' ', '-').ToLower();
+        public string Slug => productName?.Replace(' ', '-').ToLower()+ '-' + productId.ToString() ;
         
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Product>
+﻿@model List<Product>
 
 <h1>@ViewData["Title"]</h1>
 <h2>Product List</h2>
@@ -17,14 +17,14 @@
             <td>@product.DateAdded</td>
             <td>
 
-                <a asp-controller="Product" asp-action="Update" asp-route-id=""
-                   asp-route-slug="" class="btn btn-primary w-100">
+                <a asp-controller="Product" asp-action="Edit" asp-route-slug="@product.Slug" asp-route-id="@product.productId"
+                    class="btn btn-primary w-100">
                     Edit
                 </a>
             </td>
             <td>
-                <a asp-controller="Product" asp-action="Delete" asp-route-id=""
-                   asp-route-slug="" class="btn btn-primary w-100" style="color:white;">
+                <a asp-controller="Product" asp-route-slug="@product.Slug" asp-action="Delete" asp-route-id="@product.productId"
+                    class="btn btn-primary w-100" style="color:white;">
                     Delete
                 </a>
 
