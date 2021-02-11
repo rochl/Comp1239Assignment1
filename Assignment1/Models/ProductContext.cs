@@ -12,7 +12,42 @@ namespace Assignment1.Models
         
             : base(options)
         { }
-        DbSet<Product> Product{ get;set; }
+         public DbSet<Product> Products{ get;set; }
+      
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>().HasData(
+                new Product
+                {
+                    productId = 1,
+                    productName = "Computer Mouse",
+                    productPrice = 29.99,
+                    DateAdded = DateTime.Now
+                },
+                new Product
+                {
+                    productId = 2,
+                    productName = "Computer Headset",
+                    productPrice = 49.99,
+                    DateAdded = DateTime.Now
+                },
+                new Product
+                {
+                    productId = 3,
+                    productName = "Computer Montior 28'",
+                    productPrice = 129.99,
+                    DateAdded = DateTime.Now
+                },
+                new Product
+                {
+                    productId = 4,
+                    productName = "Computer Keyboard",
+                    productPrice = 59.99,
+                    DateAdded = DateTime.Now
+                }
+                ); ; ;
+        }
         
     }
 }

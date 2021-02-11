@@ -1,19 +1,25 @@
 ﻿using Assignment1.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Assignment1.Controllers
 {
     public class ProductController : Controller
     {
        
+        private ProductContext context { get; set; }
+         
+
+        public ProductController(ProductContext ctx)
+        {
+            context = ctx;
+        }
         public IActionResult Index()
         {
-            return View();
+            var products = context.Products.OrderBy(p => p.DateAdded);
+            return View(products);
         }
 
         public IActionResult Add()

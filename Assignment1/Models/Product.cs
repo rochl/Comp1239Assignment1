@@ -9,15 +9,16 @@ namespace Assignment1.Models
     public class Product
     {
         
-        public int Code { get; set; }
+        public int productId { get; set; }
         [Required(ErrorMessage = "Please enter a product name")]
-        public string Name { get; set; }
+      
+        public string productName { get; set; }
         [Required(ErrorMessage = "Please enter a product price.")]
-        public decimal Price { get; set; }
+        public double productPrice { get; set; }
 
-        public Product()
-        {
+        public DateTime DateAdded { get; set; }
 
-        }
+        public string Slug => productName?.Replace(' ', '-').ToLower();
+        
     }
 }
