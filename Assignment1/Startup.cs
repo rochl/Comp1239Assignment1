@@ -33,6 +33,7 @@ namespace Assignment1
             });
             services.AddControllersWithViews();
             services.AddDbContext<ProductContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ProductContext")));
+            services.AddDbContext<TechnicianContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TechnicianContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,16 +1,80 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
+﻿using Assignment1.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
-using System.Threading.Tasks;
-
 namespace Assignment1.Controllers
 {
     public class TechnicianController : Controller
     {
-        public IActionResult Index()
+
+        private TechnicianContext context { get; set; }
+
+        public TechnicianController(TechnicianContext ctx)
         {
-            return View();
+            context = ctx;
         }
+        public IActionResult list()
+        {
+            var tech = context.Technicians.OrderBy(p => p.techName).ToList();
+            return View(tech);
+        }
+        [HttpGet]
+        public IActionResult Add()
+        {
+            ViewBag.action = "Add";
+            var tech = context.Technicians.OrderBy(p => p.techName).ToList();
+            return View("Edit", new Technician());
+        }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            ViewBag.action = "Edit";
+            var techs = context.Technicians.OrderBy(p => p.techName).ToList();
+            var tech = context.Technicians.Find(id);
+            return View(tech);
+        }
+        [HttpPost]
+        public IActionResult Edit(Technician technician)
+        {
+            if (ModelState.IsValid)
+            {
+                if (technician.techId == 0)
+                {
+                    context.Technicians.Add(technician);
+                    context.SaveChanges();
+                    return RedirectToAction("list");
+
+                }
+                else
+                {
+                    context.Technicians.Update(technician);
+                    context.SaveChanges();
+                    return RedirectToAction("list");
+
+                }
+
+            }
+            else
+            {
+                ViewBag.Action = (technician.techId == 0) ? "Add" : "Edit";
+                ViewBag.technician = context.Technicians.OrderBy(p => p.techId).ToList();
+                return View(technician);
+            }
+
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var tech = context.Technicians.Find(id);
+            return View(tech);
+        }
+        [HttpPost]
+        public IActionResult Delete(Technician technician)
+        {
+            context.Technicians.Remove(technician);
+            context.SaveChanges();
+            return RedirectToAction("list");
+        }
+
     }
 }

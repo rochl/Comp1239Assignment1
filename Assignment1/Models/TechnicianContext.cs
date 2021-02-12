@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Assignment1.Models
 {
-    public class TechnicianContext
+    public class TechnicianContext : DbContext
     {
+        public TechnicianContext(DbContextOptions<TechnicianContext> options)
 
-        public TechnicianContext()
+            : base(options)
+    { }
+        public DbSet<Technician> Technicians { get; set; }
 
-            
-        { }
-        
+
     }
 }

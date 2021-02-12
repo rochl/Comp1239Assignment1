@@ -1,7 +1,5 @@
 ﻿using Assignment1.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
 
 
@@ -78,7 +76,7 @@ namespace Assignment1.Controllers
         {
             context.Products.Remove(product);
             context.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("list");
         }
 
 
